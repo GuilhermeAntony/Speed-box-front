@@ -12,7 +12,7 @@ import {
 } from 'react-native'
 import {} from 'react-native-web'
  import Axios from 'axios'
- import { buscarFrete } from "./src/apis/correios"
+ import { buscarFrete } from "./src/apis/correios.js"
 
 async function frete(){
   let teste = await buscarFrete("04014", "22270010", "38700204", 2, 1, 27, 9, 15, 21);

@@ -1,4 +1,6 @@
-import Axios from 'axios'; 
+import Axios from 'axios';
+import libxmljs from 'libxmljs';
+// import parseXml from 'libxmljs';
 async function buscarFrete( 
                           nCdServico,
                           sCepOrigem,
@@ -28,11 +30,12 @@ async function buscarFrete(
     };
     response = await Axios.get(url, data, { headers })
 
-    let dados = new XMLSerializer().serializeToString(response.data);
-    console.log({data : dados });
+    let dados = new libxmljs.parseXml(response.data);
+    saveXML(dados);
+    // console.log(data);
     return response.data
 }
 //08082650
 //564321
 
-module.exports = {buscarFrete}
+buscarFrete()
