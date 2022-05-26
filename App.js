@@ -12,11 +12,13 @@ import {
 } from 'react-native'
 import {} from 'react-native-web'
  import Axios from 'axios'
- import { buscarFrete } from "./src/apis/correios.js"
+//  import  buscarFrete  from "./src/apis/correios.js"
 
-async function frete(){
-  let teste = await buscarFrete("04014", "22270010", "38700204", 2, 1, 27, 9, 15, 21);
-} 
+// const main = async () => {
+// const retorno = await buscarFrete(04014, '70002900', '04547000', 1, 1, 1, 1 , 1, 0);
+// console.log(retorno)
+// }
+// main();
 
 export default function App() {
   const [numServico, setNumServico] = useState('')
@@ -88,7 +90,7 @@ export default function App() {
         ></TextInput>
 
         <TouchableOpacity 
-        onPress={()=> frete()}
+        // onPress={()=> main()}
         style={styles.button} 
         activeOpacity={0.5}>
           <Text style={styles.textButton}>Submit</Text>
