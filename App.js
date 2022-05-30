@@ -12,13 +12,13 @@ import {
 } from 'react-native'
 import {} from 'react-native-web'
  import Axios from 'axios'
-//  import  buscarFrete  from "./src/apis/correios.js"
+ import  { buscarFrete }  from "./src/apis/correios.js"
 
-// const main = async () => {
-// const retorno = await buscarFrete(04014, '70002900', '04547000', 1, 1, 1, 1 , 1, 0);
-// console.log(retorno)
-// }
-// main();
+const main = async () => {
+const retorno = await buscarFrete("", "", "04014", '70002900', '04547000', 1, 1, 1, 1 , 1, 0);
+console.log(retorno)
+}
+main();
 
 export default function App() {
   const [numServico, setNumServico] = useState('')
