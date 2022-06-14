@@ -8,7 +8,8 @@ import {
   TextInput,
   Platform,
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native'
 import { Button } from 'react-native'
 import Axios from 'axios'
@@ -89,91 +90,134 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <KeyboardAvoidingView behavior="position" enable>
-        <Text style={styles.logo}>SPEED BOX</Text>
-        <TextInput
-          onChangeText={(text) => setNumServico(text)}
-          style={styles.input}
-          placeholder="Número do Serviço"
-          value={numServico}
-        // onChangeText={setCepOrigem}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setCepOrigem(text)}
-          style={styles.input}
-          placeholder="Cep de Origem"
-          value={cepOrigem}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setCepDestino(text)}
-          style={styles.input}
-          placeholder="Cep de Destino"
-          value={cepDestino}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setpesoObjeto(text)}
-          style={styles.input}
-          placeholder="Peso do objeto"
-          value={pesoObjeto}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setFormatoObjeto(text)}
-          style={styles.input}
-          placeholder="Formato do objeto"
-          value={formatoObjeto}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setComprimentoObjeto(text)}
-          style={styles.input}
-          placeholder="Comprimento do objeto"
-          value={comprimentoObjeto}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setAlturaObjeto(text)}
-          style={styles.input}
-          placeholder="Altura do objeto"
-          value={alturaObjeto}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setLarguraObjeto(text)}
-          style={styles.input}
-          placeholder="Largura do objeto"
-          value={larguraObjeto}
-        ></TextInput>
-        <TextInput
-          onChangeText={(text) => setDiametroObjeto(text)}
-          style={styles.input}
-          placeholder="Diâmetro do objeto"
-          value={diametroObjeto}
-        ></TextInput>
+    <ScrollView>
+      <StatusBar style="auto" />
+      <View style={styles.container}>
+        <KeyboardAvoidingView behavior="position" enable>
+          <Text style={styles.logo}>SPEED BOX</Text>
+          <View style={styles.viu}>
+            <Text>Número do Serviço</Text>
+            <TextInput
+              onChangeText={(text) => setNumServico(text)}
+              style={styles.input}
+              placeholder="Número do Serviço"
+              value={numServico}
+            // onChangeText={setCepOrigem}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Cep de Origem</Text>
+            <TextInput
+              onChangeText={(text) => setCepOrigem(text)}
+              style={styles.input}
+              placeholder="Cep de Origem"
+              value={cepOrigem}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Cep de Destino</Text>
+            <TextInput
+              onChangeText={(text) => setCepDestino(text)}
+              style={styles.input}
+              placeholder="Cep de Destino"
+              value={cepDestino}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Peso do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setpesoObjeto(text)}
+              style={styles.input}
+              placeholder="Peso do objeto"
+              value={pesoObjeto}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Formato do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setFormatoObjeto(text)}
+              style={styles.input}
+              placeholder="Formato do objeto"
+              value={formatoObjeto}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Comprimento do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setComprimentoObjeto(text)}
+              style={styles.input}
+              placeholder="Comprimento do objeto"
+              value={comprimentoObjeto}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Altura do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setAlturaObjeto(text)}
+              style={styles.input}
+              placeholder="Altura do objeto"
+              value={alturaObjeto}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Largura do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setLarguraObjeto(text)}
+              style={styles.input}
+              placeholder="Largura do objeto"
+              value={larguraObjeto}
+            ></TextInput>
+          </View>
+          <View style={styles.viu}>
+            <Text>Diâmetro do objeto</Text>
+            <TextInput
+              onChangeText={(text) => setDiametroObjeto(text)}
+              style={styles.input}
+              placeholder="Diâmetro do objeto"
+              value={diametroObjeto}
+            ></TextInput>
+          </View>
 
-        <TouchableOpacity
-          onPress={() => HandleSubmit()}
-          style={styles.button}
-          activeOpacity={0.5}>
-          <Text style={styles.textButton}>Submit</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => HandleSubmit()}
+            style={styles.button}
+            activeOpacity={0.7}>
+            <Text style={styles.textButton}>Submit</Text>
+          </TouchableOpacity>
 
-        {result && result?.Servicos?.children.map(servico => {
-          console.log(servico)
-          return (
-            <Fragment key={servico.cServico.children[1].Valor.content}>
-              <Button
-                onPress={() => setResult({})} title="Retornar" />
-              <Text style={styles.text}>Valor: {servico.cServico.children[1].Valor.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[2].PrazoEntrega.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[7].EntregaDomiciliar.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[8].EntregaSabado.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[9].obsFim.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[10].Erro.content}</Text>
-              <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[11].MsgErro.content}</Text>
+          {result && result?.Servicos?.children.map(servico => {
+            console.log(servico)
+            return (
+              <Fragment key={servico.cServico.children[1].Valor.content}
+              >
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: 30,
+                    backgroundColor: "#694db4",
+                    marginVertical: 10,
+                    borderRadius: 6,
 
-            </Fragment>)
-        })}
-      </KeyboardAvoidingView>
-      {/* {console.log(result)} */}
-    </View >
+                  }}>
+                  <Text style={styles.textButton}
+                    onPress={() => setResult({})}> Retornar</Text>
+                </TouchableOpacity>
+                <Text style={styles.text}>Valor: {servico.cServico.children[1].Valor.content}</Text>
+                <Text style={styles.text}>Prazo de Entrega: {servico.cServico.children[2].PrazoEntrega.content}</Text>
+                <Text style={styles.text}>Entrega Domiciliar: {servico.cServico.children[7].EntregaDomiciliar.content}</Text>
+                <Text style={styles.text}>Entrega no Sábado: {servico.cServico.children[8].EntregaSabado.content}</Text>
+                <Text style={styles.text}>Obs Final: {servico.cServico.children[9].obsFim.content}</Text>
+                <Text style={styles.text}>Código Final: {servico.cServico.children[10].Erro.content}</Text>
+                <Text style={styles.text}>Mensagem de Erro: {servico.cServico.children[11].MsgErro.content}</Text>
+
+              </Fragment>)
+          })}
+        </KeyboardAvoidingView>
+        {/* {console.log(result)} */}
+      </View >
+    </ScrollView >
   )
 }
 
@@ -182,7 +226,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#694db4',
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 20
   },
   container: {
     flex: 1,
@@ -196,7 +241,7 @@ const styles = StyleSheet.create({
     color: '#eff8ff',
     fontSize: 18,
     padding: Platform.OS === 'ios' ? 15 : 10,
-    marginTop: 22,
+    marginTop: 7,
     borderRadius: 7
   },
   button: {
@@ -207,10 +252,20 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   textButton: {
-    color: '#eff8ff'
+    color: '#eff8ff',
+    fontSize: 18
   },
   text: {
     color: '#eff8ff',
-    fontSize: 18
+    fontSize: 18,
+    marginTop: 15,
+    backgroundColor: '#0d0c0f',
+    padding: 5
+  },
+  retorna: {
+    marginTop: 10
+  },
+  viu: {
+    marginVertical: 12
   }
 })
